@@ -3,7 +3,7 @@ import { hash } from 'bcrypt'
 import type { FieldResolver } from 'nexus'
 import nodemailer from 'nodemailer'
 
-import { getRedisClient } from '../../../lib/redis'
+import { kv } from "@vercel/kv";
 import { getTransport } from '../../mail/transport'
 import { generateVerificationEmail } from '../../mail/verifyAccount'
 import { registrationValidation } from '../../utils/registrationValidation'
@@ -28,11 +28,8 @@ export const createAccount: FieldResolver<'Mutation', 'createAccount'> = async (
     hashedPass
   }
 
-  await getRedisClient()
-    .multi()
-    .hmset(key, userOjt)
-    .expire(key, 60 * 60 * 24)
-    .exec()
+  await kv.set(key, userOjt, {ex: 60 * 60 * 24})
+
   const mailOptions = {
     username: credentials.username,
     email: credentials.email,

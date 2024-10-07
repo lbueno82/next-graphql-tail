@@ -4,15 +4,17 @@
   "private": true,
   "scripts": {
     "build:nexus-typegen": "ts-node --transpile-only src/modules/graphql/schema.ts",
-    "predev": "yarn run build:nexus-typegen && yarn run generate",
-    "dev": "yarn predev && infisical run -- next dev",
-    "build": "next build",
+    "predev": "pnpm run build:nexus-typegen && pnpm run generate",
+    "dev": "pnpm predev && infisical run -- next dev",
+    "build": "pnpm predev && next build",
     "start": "next start",
     "lint": "eslint --fix --ext .js,.mjs,.ts,.tsx,.jsx .",
     "generate": "graphql-codegen --config codegen.yml",
     "test": "vitest --config ./vitest.config.mts",
     "test:coverage": "vitest run --coverage --config ./vitest.config.mts",
-    "migrate:dev": "infisical run -- ts-node ./scripts/migrations.ts \"migrate dev\""
+    "db:migrate": "infisical run -- ts-node ./scripts/migrations.ts \"migrate dev\"",
+    "db:seed": "infisical run -- ts-node ./scripts/migrations.ts \"db seed\"",
+    "db:push": "infisical run -- pnpm prisma db push"
   },
   "dependencies": {
     "@apollo/client": "^3.11.8",
@@ -22,6 +24,7 @@
     "@emotion/styled": "^11.13.0",
     "@prisma/client": "5.20.0",
     "@types/cors": "^2.8.17",
+    "@vercel/kv": "^3.0.0",
     "apollo-server-micro": "^3.13.0",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
@@ -29,7 +32,6 @@
     "formik": "^2.4.6",
     "framer-motion": "^11.11.1",
     "graphql": "^16.9.0",
-    "ioredis": "^5.4.1",
     "jsonwebtoken": "^9.0.2",
     "lodash": "^4.17.21",
     "micro": "^10.0.1",
