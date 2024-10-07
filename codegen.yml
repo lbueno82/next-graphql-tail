@@ -11,7 +11,7 @@ generates:
       - "typescript-resolvers"
       - 'typescript-react-apollo'
     config:
-      contextType: "src/types/Context#Context"
+      # contextType: "src/types/Context#Context"
       useIndexSignature: true
-      customResolveInfo: "src/types/ResolveInfo#ResolveInfo"
-      customFieldConfig: "src/types/FieldConfig#FieldConfig"
+      # customResolveInfo: "src/types/ResolveInfo#ResolveInfo"
+      # customFieldConfig: "src/types/FieldConfig#FieldConfig"

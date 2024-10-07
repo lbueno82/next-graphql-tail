@@ -6,7 +6,7 @@
     "build:nexus-typegen": "ts-node --transpile-only src/modules/graphql/schema.ts",
     "predev": "yarn run build:nexus-typegen && yarn run generate",
     "dev": "yarn predev && infisical run -- next dev",
-    "build": "yarn predev && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint --fix --ext .js,.mjs,.ts,.tsx,.jsx .",
     "generate": "graphql-codegen --config codegen.yml",
