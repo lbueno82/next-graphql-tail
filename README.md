@@ -7,7 +7,7 @@
 - Next.js
 - GraphQL Nexus
 - Apollo Server
-- Tailwind
+- Tailwindcss
 
 
 > ##### Para acesso as chaves de configuração criar o arquivo .env a partir do arquivo de exemplo .env.example
