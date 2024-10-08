@@ -1,14 +1,19 @@
 import { execSync } from 'node:child_process'
 
+const requerSSL = process.env.POSTGRES_SSL === 'true'
+
 function runPrisma(command: string, schema: string) {
+  const dbURL = requerSSL ? `${process.env.POSTGRES_URL}&schema=${schema}` : `${process.env.POSTGRES_URL}?schema=${schema}`
+  console.log(`SSL enabled: ${requerSSL}`)
+  console.log(process.env.POSTGRES_SSL)
   const env = {
     ...process.env,
-    DATABASE_URL: `${process.env.DATABASE_URL}?schema=${schema}`
+    POSTGRES_URL: dbURL
   }
   try {
     console.log(
       `Running Prisma ${command} for schema ${schema}`,
-      env.DATABASE_URL
+      env.POSTGRES_URL
     )
     execSync(`npx prisma ${command}`, {
       stdio: 'inherit',

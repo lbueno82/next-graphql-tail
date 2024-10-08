@@ -4,12 +4,16 @@ import jwt, { type JwtPayload } from 'jsonwebtoken'
 
 import { schema } from '../modules/graphql/schema'
 
+const requerSSL = process.env.POSTGRES_SSL === 'true'
+
+
 // Função para criar um cliente Prisma com logging
 const createPrismaClientWithLogging = (datasource: string) => {
+  const dbURL = requerSSL ? `${process.env.POSTGRES_URL}&schema=${datasource}` : `${process.env.POSTGRES_URL}?schema=${datasource}`
   const prisma = new PrismaClient({
     datasources: {
       db: {
-        url: `${process.env.DATABASE_URL}?schema=${datasource}`
+        url: dbURL
       }
     },
     log: [{ emit: 'event', level: 'query' }]
