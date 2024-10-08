@@ -1,6 +1,6 @@
 {
   "name": "next-graphql-tailwindcss",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "build:nexus-typegen": "ts-node --transpile-only src/modules/graphql/schema.ts",

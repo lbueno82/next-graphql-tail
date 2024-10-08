@@ -10,34 +10,34 @@
 - Tailwindcss
 
 
-> ##### Para acesso as chaves de configuração criar o arquivo .env a partir do arquivo de exemplo .env.example
+> Para acesso as chaves de configuração criar o arquivo .env a partir do arquivo de exemplo .env.example
 
-> ##### Ou fazer uso da ferramenta infisical seguindo as orientações do link [Guia NExts.js + Vercel](https://infisical.com/docs/documentation/guides/nextjs-vercel)
+> Ou fazer uso da ferramenta infisical seguindo as orientações do link [Guia NExts.js + Vercel](https://infisical.com/docs/documentation/guides/nextjs-vercel)
 
 
-Projeto configurado para multi-tenant, baseado em schema para separar dados dos clientes, em um versão futura teremos a separação por banco de dados.
+Projeto configurado para multi-tenant, baseado em schema para separar dados dos clientes, __*em um versão futura teremos a separação por banco de dados*__.
 
 ### Getting Started
 
 First, run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000) com seu navegador para ver o resultado.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Este projeto usa [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) para otimizar e carregar automaticamente o Inter, uma fonte personalizada do Google.
 
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+A maneira mais fácil de implementar seu aplicativo Next.js é usar a Plataforma Vercel dos criadores do Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Confira [a documentação](https://nextjs.org/docs/deployment) de implementação do Next.js para mais detalhes.
+
+### Storages
+Projeto configurado para uso dos recursos da Vercel
+- Banco Postgress
+- Redis - Vercel KV.
+
